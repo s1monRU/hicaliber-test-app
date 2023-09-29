@@ -18,23 +18,23 @@ class SearchController extends Controller
     {
         $properties = Property::query();
 
-        if ($request->has('name')) {
+        if ($request->name) {
             $properties->where('name', 'like', "%{$request->name}%");
         }
 
-        if ($request->has('bedrooms')) {
+        if ($request->bedrooms) {
             $properties->where('bedrooms', $request->bedrooms);
         }
 
-        if ($request->has('bathrooms')) {
+        if ($request->bathrooms) {
             $properties->where('bathrooms', $request->bathrooms);
         }
 
-        if ($request->has('storeys')) {
+        if ($request->storeys) {
             $properties->where('storeys', $request->storeys);
         }
 
-        if ($request->has('garages')) {
+        if ($request->garages) {
             $properties->where('garages', $request->garages);
         }
 
