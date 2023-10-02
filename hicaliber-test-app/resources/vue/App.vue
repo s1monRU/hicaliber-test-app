@@ -7,7 +7,7 @@ export default {
     components: {ResultsTable, SearchForm},
     data() {
         return {
-            results: {},
+            results: [],
             isLoading: false,
         }
     },
