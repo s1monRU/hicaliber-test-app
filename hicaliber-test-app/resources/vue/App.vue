@@ -1,11 +1,10 @@
 <script>
 import SearchForm from "./SearchForm.vue";
 import ResultsTable from "./ResultsTable.vue";
-import LoadingIndicator from "./LoadingIndicator.vue";
 
 export default {
     name: "App",
-    components: {LoadingIndicator, ResultsTable, SearchForm},
+    components: {ResultsTable, SearchForm},
     data() {
         return {
             results: {},
@@ -37,9 +36,12 @@ export default {
 </script>
 
 <template>
-    <SearchForm @perform-search="performSearch"></SearchForm>
-    <LoadingIndicator v-if="isLoading"></LoadingIndicator>
-    <ResultsTable :results="results" v-if="!isLoading"></ResultsTable>
+    <el-container>
+        <el-main>
+            <SearchForm @perform-search="performSearch" :isLoading="isLoading"></SearchForm>
+            <ResultsTable :results="results" v-if="!isLoading"></ResultsTable>
+        </el-main>
+    </el-container>
 </template>
 
 <style scoped>
