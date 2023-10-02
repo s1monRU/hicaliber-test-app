@@ -1,6 +1,10 @@
 <script>
+import SearchFormOptionComponent from "./SearchFormOptionComponent.vue";
+import SearchFormPriceInputComponent from "./SearchFormPriceInputComponent.vue";
+
 export default {
     name: "SearchForm",
+    components: {SearchFormPriceInputComponent, SearchFormOptionComponent},
     emits: ['perform-search'],
     props: ['isLoading'],
     data() {
@@ -27,7 +31,7 @@ export default {
         name="property-search-form"
         class="property-search-form"
     >
-        <el-row gutter="20" justify="center">
+        <el-row :gutter="20" justify="center">
             <el-col :span="8" :xs="24">
                 <el-form-item>
                     <el-input v-model="searchFormData.name" placeholder="Property name" clearable></el-input>
@@ -35,66 +39,34 @@ export default {
             </el-col>
             <el-col :span="4" :xs="10">
                 <el-select v-model="searchFormData.bedrooms" placeholder="Bedrooms" clearable>
-                    <el-option
-                        v-for="amount of [1, 2, 3, 4, 5, 6, 7]"
-                        :key="amount"
-                        :label="amount"
-                        :value="amount"
-                    />
+                    <SearchFormOptionComponent/>
                 </el-select>
             </el-col>
             <el-col :span="4" :xs="10">
                 <el-select v-model="searchFormData.bathrooms" placeholder="Bathrooms" clearable>
-                    <el-option
-                        v-for="amount of [1, 2, 3, 4, 5, 6, 7]"
-                        :key="amount"
-                        :label="amount"
-                        :value="amount"
-                    />
+                    <SearchFormOptionComponent/>
                 </el-select>
             </el-col>
         </el-row>
-        <el-row gutter="20" justify="center">
+        <el-row :gutter="20" justify="center">
             <el-col :span="8" :xs="24">
-                <el-row gutter="20" justify="center">
+                <el-row :gutter="20" justify="center">
                     <el-col :span="12" :xs="10">
-                        <el-input
-                            v-model="searchFormData.price.min"
-                            placeholder="From"
-                            :formatter="(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')"
-                            :parser="(value) => value.replace(/\$\s?|( *)/g, '')"
-                            clearable
-                        />
+                        <SearchFormPriceInputComponent v-model="searchFormData.price.min" placeholder="From" />
                     </el-col>
                     <el-col :span="12" :xs="10">
-                        <el-input
-                            v-model="searchFormData.price.max"
-                            placeholder="To"
-                            :formatter="(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')"
-                            :parser="(value) => value.replace(/\$\s?|( *)/g, '')"
-                            clearable
-                        />
+                        <SearchFormPriceInputComponent v-model="searchFormData.price.max" placeholder="To" />
                     </el-col>
                 </el-row>
             </el-col>
             <el-col :span="4" :xs="10">
                 <el-select v-model="searchFormData.storeys" placeholder="Storeys" clearable>
-                    <el-option
-                        v-for="amount of [1, 2, 3, 4, 5, 6, 7]"
-                        :key="amount"
-                        :label="amount"
-                        :value="amount"
-                    />
+                    <SearchFormOptionComponent/>
                 </el-select>
             </el-col>
             <el-col :span="4" :xs="10">
                 <el-select v-model="searchFormData.garages" placeholder="Garages" clearable>
-                    <el-option
-                        v-for="amount of [1, 2, 3, 4, 5, 6, 7]"
-                        :key="amount"
-                        :label="amount"
-                        :value="amount"
-                    />
+                    <SearchFormOptionComponent/>
                 </el-select>
             </el-col>
         </el-row>

@@ -1,5 +1,5 @@
 <script>
-import SearchForm from "./SearchForm.vue";
+import SearchForm from "./SearchForm/SearchForm.vue";
 import ResultsTable from "./ResultsTable.vue";
 
 export default {
